@@ -45,7 +45,7 @@ u = hexacontrol(t,Y);
 
 omega = zeros(6,1);
 
-omega(1) = sqrt((1/(6*b*l))*(l*u(1) + 2*u(2) - b*l*u(4)/d));
+omega(1) = sqrt((1/(6*b*l))*(l*u(1)+2*u(2)-b*l*u(4)/d));
 omega(2) = sqrt((1/(6*b*l))*(l*u(1) + u(2) - sqrt(3)*u(3) - b*l*u(4)/d));
 omega(3) = sqrt((1/(6*b*l))*(l*u(1) - u(2) - sqrt(3)*u(3) - b*l*u(4)/d));
 omega(4) = sqrt((1/(6*b*l))*(l*u(1) - 2*u(2) + b*l*u(4)/d));
