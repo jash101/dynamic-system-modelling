@@ -4,11 +4,10 @@ global Eprev;
 global Wref;
 
 Esum = 0;
-Eprev = 0;
-Wref = 1000;
-Kp = 50;
-Ki = 1;
-Kd = 0.01;
+%Eprev = 0;
+Kp = 0.001;
+Ki = 0.001;
+Kd = 0.001;
 
 e = Wref - y(2);
 Esum = Esum + e;
