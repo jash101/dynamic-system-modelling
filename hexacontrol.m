@@ -4,10 +4,13 @@ u = zeros(4,1);
 e = zeros(8,1);%Steady state error matrix
 
 z = 10; %Reference height
-kp = 10000; ki = 20; kd = 40;%error coeffs
+kp = 10000; ki = 200; kd = 40;%error coeffs
+% kp = 0.05; ki = 0.1; kd = 1;%error coeffs
 e(1) = z-Y(11);
 u(1) = kp*e(1) + ki*(e(1) + e(2)) + kd*(e(1) - e(2));
 e(2) = e(1);
+
+plot(t, e(1));
 
 %phi reference
 phi = 0;
