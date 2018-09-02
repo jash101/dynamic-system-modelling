@@ -1,19 +1,19 @@
-function V = controller (t,Y)
+function V = controller(t,y)
+global Esum;
+global Eprev;
+global Wref;
 
-e = zeros(3,1);%Steady state error matrix
+%Esum = 0;
+%Eprev = 0;
+Kp = 0.001;
+Ki = 0.001;
+Kd = 0.001;
 
-w = 1000; %Reference speed
+e = Wref - y(2);
+Esum = Esum + e;
 
-kp = 0.05; ki = 0.1; kd = 0.1;%error coeffs
+V = Kp*e + Ki*Esum + Kd*(e - Eprev);
 
-e(1) = w-Y(2);
-
-
-
-V = kp*e(1) + ki*(e(1) + e(2)) + kd*(e(1) - e(2));
-
-e(2) = e(1);
-
-
+Eprev = e;
 
 end
