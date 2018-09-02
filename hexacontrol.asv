@@ -1,15 +1,17 @@
-function u = hexacontrol (t,Y,e)
+function u = hexacontrol (t,Y)
 
 u = zeros(4,1);
+global e;
+e = zeros(8,1);%Steady state error matrix
 
 global z;
-z = 100; %Reference height
-kp = 1000; ki = 500; kd = 100;%error coeffs
+z = 10; %Reference height
+kp = 1000; ki = 200; kd = 0.1;%error coeffs
 % kp = 0.05; ki = 0.1; kd = 1;%error coeffs
 e(1) = z-Y(11);
-e(3) = e(3) + e(1);
+e(3) = e(3) +    e(1)*0.01;
 u(1) = kp*e(1) + ki*(e(3)) + kd*(e(1) - e(2));
-e(2) = e(1)
+e(2) = e(1);
 
 %phi reference
 phi = 0;
