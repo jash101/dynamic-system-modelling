@@ -1,22 +1,26 @@
-function u = hexacontrol (t,Y,e)
+function u = hexacontrol (t,Y)
 
 u = zeros(4,1);
-
+e = zeros(1,8);
+global e_curr;
+global e_prev;
+global e_sum;
 global z;
 z = 100; %Reference height
-kp = 1000; ki = 500; kd = 100;%error coeffs
+% kp = 30; ki = 7; kd = 20;%error coeffs---WORKS PERFECTLY
+kp = 30; ki = 0.007; kd = 2000;%error coeffs
 % kp = 0.05; ki = 0.1; kd = 1;%error coeffs
-e(1) = z-Y(11);
-e(3) = e(3) + e(1);
-u(1) = kp*e(1) + ki*(e(3)) + kd*(e(1) - e(2));
-e(2) = e(1)
+e_curr = z-Y(11);
+e_sum = e_sum + e_curr;
+u(1) = kp*e_curr + ki*(e_sum) + kd*(e_curr - e_prev);
+e_prev = e_curr
 
 %phi reference
 phi = 0;
 kp = 0.05; ki = 0.1; kd = 1;%error coeffs
-e(3) = phi-Y(1);
-u(2) = kp*e(3) + ki*(e(3) + e(4)) + kd*(e(3) - e(4));
-e(4) = e(3);
+e_sum = phi-Y(1);
+u(2) = kp*e_sum + ki*(e_sum + e(4)) + kd*(e_sum - e(4));
+e(4) = e_sum;
 
 %theta reference
 theta = 0;
