@@ -39,10 +39,10 @@ uy = cos(Y(1))*sin(Y(3))*sin(Y(5)) - sin(Y(1))*cos(Y(5));
 dY = zeros(12,1);
 
 % global e;
-e = zeros(1,8);%Steady state error matrix
+%e = zeros(1,8);%Steady state error matrix
 
 %Calculate the voltage given by PID according to the error in speed w
-u = hexacontrol(t,Y,e);
+u = hexacontrol(t,Y);
 
 %u2omega = [b,b,b,b,b,b; (-b*l/2),-b*l, (-b*l/2), (b*l/2), b*l, b*l/2;-b*l*(sqrt(3))/2, 0, b*l*(sqrt(3))/2, b*l*(sqrt(3))/2, 0, -b*l*(sqrt(3))/2;-d, d, -d, d, -d, d];
 
