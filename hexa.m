@@ -38,9 +38,6 @@ uy = cos(Y(1))*sin(Y(3))*sin(Y(5)) - sin(Y(1))*cos(Y(5));
 %with zero matrix
 dY = zeros(12,1);
 
-% global e;
-%e = zeros(1,8);%Steady state error matrix
-
 %Calculate the voltage given by PID according to the error in speed w
 u = hexacontrol(t,Y);
 
@@ -58,17 +55,6 @@ omega(5) = sqrt((1/(6*b*l))*(l*u(1) + u(2) + sqrt(3)*u(3) + b*l*u(4)/d));
 omega_r = -omega(1) + omega(2) - omega(3) + omega(4) - omega(5) + omega(6);
 
 %%Differential equations
-% dy(1) = a(1)*Y(4)*Y(6) + a(2)*Y(2)*Y(2) + a(3)*Y(4)*omega_r + b(1)*u(2);
-% 
-% dy(2) = a(4)*Y(2)*Y(6) + a(5)*Y(4)*Y(4) + a(6)*Y(2)*omega_r + b(2)*u(3);
-% 
-% dy(3) = a(7)*Y(2)*Y(4) + a(8)*Y(6)*Y(6) + b(3)*u(4);
-% 
-% dy(4) = a(9)*Y(8) + (1/m)*ux*u(1);
-% 
-% dy(5) = a(10)*Y(10) + (1/m)*uy*u(1);
-% 
-% dy(6) = a(11)*Y(12) + (cos(Y(1))*cos(Y(3))/m)*u(1) - g;
 dY(1) = Y(2);
 dY(2) = a(1)*Y(4)*Y(6) + a(2)*Y(2)*Y(2) + a(3)*Y(4)*omega_r + b(1)*u(2);
 dY(3) = Y(4);
@@ -82,5 +68,3 @@ dY(10) = a(10)*Y(10) + (1/m)*uy*u(1);
 dY(11) = Y(12);
 dY(12) = a(11)*Y(12) + (cos(Y(1))*cos(Y(3))/m)*u(1) - g;
 end
-
-%u matrix
