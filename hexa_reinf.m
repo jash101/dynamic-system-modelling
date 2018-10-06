@@ -37,12 +37,12 @@ dY = zeros(12,1);
 global Kj;
 Kj = hexreinforce(t, Y);
 
-Y_star = Y;
+Y_star = -Y;
 Y_star(11) = 100 - Y(11);
 
 %Calculate the voltage given by PID according to the error in speed w
 global u;
-u = Kj*Y_star;
+u = -Kj*Y_star;
 
 %u2omega = [b,b,b,b,b,b; (-b*l/2),-b*l, (-b*l/2), (b*l/2), b*l, b*l/2;-b*l*(sqrt(3))/2, 0, b*l*(sqrt(3))/2, b*l*(sqrt(3))/2, 0, -b*l*(sqrt(3))/2;-d, d, -d, d, -d, d];
 
