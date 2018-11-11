@@ -1,0 +1,15 @@
+t=0:0.01:50;
+R=8;
+L=6e-5;
+J=0.02;
+B=0;
+Kt=1;
+Kb=1;
+Tl=1;
+N=1;
+phi=0.0015;
+y=zeros(2,1);
+options=odeset('OutputFcn',@odeplot);
+[Mt My]=ode45(@dcmotor,t,y,options);
+%plot(Mt,My(:,1));
+%plot(Mt,My(:,2));
